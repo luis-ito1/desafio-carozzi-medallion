@@ -1,0 +1,23 @@
+# No subir datos
+data/raw/*
+data/bronze/*
+data/silver/*
+data/gold/*
+
+# Mantener solo estructura
+!data/raw/
+!data/bronze/
+!data/silver/
+!data/gold/
+
+# No subir entorno virtual
+venv/
+
+# Archivos grandes generados
+*.parquet
+*.csv
+
+# Cachés
+__pycache__/
+*.log
+*.tmp
