@@ -120,38 +120,3 @@ Las demás carpetas se generan automáticamente al correr el pipeline.
             a. Ingesta Bronze
             b. Transformación Silver
             c. Generación de la tabla Gold
-
-6. Cómo migrar esta solución a Azure / Fabric (visión general)
-
-Aunque este proyecto corre localmente con Docker, está diseñado de manera que su estructura sea fácil de migrar a la nube. La arquitectura equivalente sería:
-
-Almacenamiento
-    * Transformar data/ en un Data Lake (ADLS Gen2).
-    * Crear contenedores o carpetas: /bronze, /silver, /gold.
-
-Procesamiento
-    * Migrar el código PySpark a:
-        - Azure Databricks, o
-        - Microsoft Fabric Lakehouse
-
-Ambos permiten correr PySpark nativamente y escalar horizontalmente.
-
-Orquestación
-    * Programar y secuenciar las tareas con:
-        - Azure Data Factory, o
-        - Fabric Data Pipelines
-
-Seguridad
-    * Key Vault para secretos.
-    * RBAC para permisos en el lake.
-    * Logs centralizados en Log Analytics.
-
-Escalamiento
-    * Reemplazar Parquet por Delta Lake (ACID).
-    * Particionar tablas grandes por fecha.
-    * Activar autoscaling en Spark.
-
-7. Estado del proyecto
-
-El pipeline completo funciona correctamente de extremo a extremo y genera las tres capas de la arquitectura Medallion.
-La tabla dim_features queda lista para ser usada en análisis o cargada a Power BI.
